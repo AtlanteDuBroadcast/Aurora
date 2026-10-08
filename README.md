@@ -22,4 +22,4 @@ cd /opt/docker/Aurora/scripts/@Install
 
 chmod +x *.sh
 
-././0install.sh
+./0install.sh
