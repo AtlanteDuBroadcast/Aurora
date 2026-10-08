@@ -1,0 +1,19 @@
+#-----------------------------------------------------------------------------------------------#
+#-- Change Log
+#-----------------------------------------------------------------------------------------------#
+Version 20XX-XX-XX
+- Ajout doc API (/doc/api.php)
+
+Version : 2026-09-03
+- Ajout force reboot pour Debian13
+- Ajout Update & Upgrade via API
+- Amélioration de la sécurité WEB
+- Ajout d'un TOKEN sur API
+- Ajout Gestion du système (uptime, cpu, ram, disque, …)
+
+
+
+Version : 2025-09-16
+- Ajout de la gestion des HOSTS
+- Ajout fichier LOG + télèchargement log depuis interface
+- Ajout purge fichier log (lors de l'ouverture de la page web)

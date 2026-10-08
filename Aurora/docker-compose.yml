@@ -1,0 +1,43 @@
+services:
+ php: #Image PHP en nom du service 
+  image: php:8.4.7-apache
+  container_name: php84_Aurora
+  ports:
+  #Externe:Interne
+   - 9080:80
+  restart: always
+
+  extra_hosts:
+   - "host.docker.internal:host-gateway"
+            
+  volumes:
+   - ./php:/var/www/html:ro
+   - ./scripts:/var/www/html/scripts:ro
+   - ./setup:/opt/docker/Docker/setup:ro
+   - /dev/sda1:/dev/sda1:ro
+#   - ./conf_php:/usr/local/etc/php:ro
+   - /sys/class/net:/sys/class/net:ro
+   - /proc:/proc:rw
+   - /sys:/sys:ro
+   - /var/run/docker.sock:/var/run/docker.sock:ro   
+   - /run/systemd:/run/systemd:ro
+   
+  privileged: true
+
+  build:
+   context: .
+   dockerfile: Dockerfile 
+
+ mariadb:
+    image: mariadb:11.2
+    container_name: mariadb_Aurora
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_P@ssW0rds
+      MYSQL_DATABASE: Aurora_MyDataBase
+      MYSQL_USER: Aurora
+      MYSQL_PASSWORD: Aurora_password
+    ports:
+      - 53306:3306
+    volumes:
+      - ./mariadb_data:/var/lib/mysql:rw
